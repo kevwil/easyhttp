@@ -1,0 +1,7 @@
+{
+  "name":"easyhttp",
+  "description":"A simplified wrapper around the core node.js http client.",
+  "version":"0.1",
+  "homepage":"https://github.com/kevwil/easyhttp",
+  "repository":{"type":"git","url":"h"}
+}
