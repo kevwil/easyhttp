@@ -8,19 +8,34 @@ exports.get = function(requestUrl, callback){
 
 exports.post = function(requestUrl, params, callback){
     var options = {method:'POST'};
-    if(params){options['params'] = params;}
+    if(typeof params == 'function'){
+        callback = params;
+        params = {};
+    }else{
+        options['params'] = params;
+    }
     doRequest(requestUrl, options, callback);
 }
 
 exports.put = function(requestUrl, params, callback){
     var options = {method:'PUT'};
-    if(params){options['params'] = params;}
+    if(typeof params == 'function'){
+        callback = params;
+        params = {};
+    }else{
+        options['params'] = params;
+    }
     doRequest(requestUrl, options, callback);
 }
 
 exports.delete = function(requestUrl, params, callback){
     var options = {method:'DELETE'};
-    if(params){options['params'] = params;}
+    if(typeof params == 'function'){
+        callback = params;
+        params = {};
+    }else{
+        options['params'] = params;
+    }
     doRequest(requestUrl, options, callback);
 }
 
