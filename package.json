@@ -1,7 +1,7 @@
 {
   "name":"easyhttp",
   "description":"A simplified wrapper around the core node.js http client.",
-  "version":"0.0.1",
+  "version":"1.0.0",
   "homepage":"https://github.com/kevwil/easyhttp",
   "repository":{"type":"git","url":"git://github.com/kevwil/easyhttp.git"},
   "bugs":"https://github.com/kevwil/easyhttp/issues",
@@ -11,5 +11,4 @@
   "main":"easyhttp.js",
   "devDependencies":{"vows":"0.6.1"},
   "scripts":{"test":"vows test/* --spec"},
-  "private":true
 }
