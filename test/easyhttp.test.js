@@ -1,6 +1,6 @@
 var vows = require('vows'),
     assert = require('assert'),
-    client = require('../easyhttp'),
+    client = require('../lib/easyhttp'),
     http = require('http');
 
 // dummy server
