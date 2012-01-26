@@ -27,6 +27,7 @@ vows.describe('HTTP Methods').addBatch({
             client.get('http://127.0.0.1:1337/hello',this.callback);
         },
         'returns 200':function(body,res){
+            assert.isNotNull(body);
             assert.equal(res.statusCode, 200);
         }
     },
@@ -46,14 +47,16 @@ vows.describe('HTTP Methods').addBatch({
         },
         'return 200 successfully':function(body,res){
             assert.equal(res.statusCode, 200);
+            assert.isNotNull(body);
         }
     },
     'delete':{
         topic:function(){
-            client.delete('http://127.0.0.1:1337/existing', this.callback);
+            client.del('http://127.0.0.1:1337/existing', this.callback);
         },
         'handles no params and returns 200':function(body,res){
             assert.equal(res.statusCode, 200);
+            assert.isNotNull(body);
         }
     }
 }).export(module);
