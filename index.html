@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Easyhttp by kevwil</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Easyhttp</h1>
+<p>A simplified wrapper around the core node.js http client.</p>
+        <p class="view"><a href="https://github.com/kevwil/easyhttp">View the Project on GitHub <small>kevwil/easyhttp</small></a></p>
+        <ul>
+          <li><a href="https://github.com/kevwil/easyhttp/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kevwil/easyhttp/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kevwil/easyhttp">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>EasyHttp</h1>
+
+<p>A simplified wrapper around <a href="http://nodejs.org/docs/latest/api/http.html#http.request">the core node.js http client</a>.</p>
+
+<h2>Basics</h2>
+
+<p>There are simple functions for 'get', 'post', 'put', and 'delete'.</p>
+
+<p>With the exception of 'get', they all take a second argument in the
+form of a hash of params.</p>
+
+<p>All require a callback function which will receive the body and <a href="http://nodejs.org/docs/latest/api/http.html#http.ClientResponse">the ClientResponse object</a>. </p>
+
+<h2>GET</h2>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"easyhttp"</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"<a href="http://server.com/foo/bar">http://server.com/foo/bar</a>"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+    <span class="c1">// do something</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<h2>POST</h2>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"easyhttp"</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"<a href="http://server.com/users/create">http://server.com/users/create</a>"</span><span class="p">,</span>
+    <span class="p">{</span><span class="s2">"fname"</span><span class="o">:</span><span class="s2">"Luke"</span><span class="p">,</span><span class="s2">"lname"</span><span class="o">:</span><span class="s2">"Skywalker"</span><span class="p">},</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+        <span class="c1">// do your thing</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre>
+</div>
+
+
+<h2>Low Level</h2>
+
+<p>All the simple functions end up calling the <code>doRequest</code> method, which looks like this:</p>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"easyhttp"</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">doRequest</span><span class="p">(</span>
+    <span class="s2">"<a href="http://server.com/service">http://server.com/service</a>"</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s2">"method"</span><span class="o">:</span><span class="s2">"POST"</span><span class="p">,</span>
+        <span class="s2">"headers"</span><span class="o">:</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="o">:</span><span class="s2">"token OAUTH-TOKEN"</span><span class="p">},</span>
+        <span class="s2">"params"</span><span class="o">:</span><span class="p">{</span><span class="s2">"status"</span><span class="o">:</span><span class="s2">"You\'ll never guess what she said next ..."</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+        <span class="c1">// do that thing you do so well</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre>
+</div>
+
+
+<h2>Why?</h2>
+
+<p>I find the node.js http client usage to be fast but verbose, so I decided to try to simplify it.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/kevwil">kevwil</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
